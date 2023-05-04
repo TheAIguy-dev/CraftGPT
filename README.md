@@ -1,4 +1,5 @@
-![Logo](https://user-images.githubusercontent.com/90064221/236351852-56cc9043-76d0-4f1a-ac88-9e2a5d71b42d.png) # CraftGPT
+![Logo](https://user-images.githubusercontent.com/90064221/236351852-56cc9043-76d0-4f1a-ac88-9e2a5d71b42d.png)
+# CraftGPT
 
 CraftGPT is a lightweight plugin that allows you to integrate an AI-powered chatbot into your Minecraft server. With this plugin, your players can interact with an AI chatbot that uses OpenAI's API to generate responses based on the conversation.
 
