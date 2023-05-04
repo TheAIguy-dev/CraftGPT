@@ -5,9 +5,9 @@ CraftGPT is a lightweight plugin that allows you to integrate an AI-powered chat
 ## Features
 - Lightweight plugin with minimal impact on server performance
 - Easy integration into your Spigot server
-- Flexible AI model selection
 - Command-based interface for generating responses
 - Cooldown timer to prevent spamming
+- Flexible configuration
 
 ## Installation
 To install CraftGPT, you will first need to sign up for an OpenAI API key, which is required to use the API. Here's how to get your API key:
