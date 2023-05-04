@@ -22,9 +22,9 @@ import static com.theaiguy_.craftgpt.CraftGPT.getPlugin;
 public class gpt implements CommandExecutor
 {
     public static final HashMap<String, List<ChatMessage>> messages = new HashMap<>();
-    private static final Long cooldownMs = config().getLong("cooldown");
     private static HashMap<String, Long> cooldowns = new HashMap<>();
-    private static final String token = config().getString("token");
+    static Long cooldownMs = config().getLong("cooldown");
+    static String token = config().getString("token");
 
 
     @Override

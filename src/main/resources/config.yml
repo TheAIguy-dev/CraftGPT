@@ -24,8 +24,11 @@ messages:
   # When the gpt command is executed.
   generating: "Generating, please wait..."
 
-  # When an error occurs while generating a response.
+  # When an error occurs.
   error: "Something went wrong."
 
   # When the newchat command is executed.
   chat-cleared: "This chat has been wiped."
+
+  # When the configuration is reloaded.
+  reload: "Configuration successfully reloaded."

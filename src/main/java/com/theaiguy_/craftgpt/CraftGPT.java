@@ -15,6 +15,7 @@ public final class CraftGPT extends JavaPlugin
         saveDefaultConfig();
         registerCommand("gpt", new gpt());
         registerCommand("newchat", new newchat());
+        registerCommand("craftgpt", new reload());
     }
 
     @Override

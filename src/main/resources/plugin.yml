@@ -13,6 +13,9 @@ commands:
   newchat:
     permission: craftgpt.newchat
     description: Clear current conversation.
+  craftgpt:
+    permission: craftgpt.reload
+    description: Reload the plugin.
 
 permissions:
   craftgpt.use:
@@ -21,4 +24,6 @@ permissions:
       craftgpt.gpt: true
       craftgpt.newchat: true
   craftgpt.cooldown:
+    default: op
+  craftgpt.reload:
     default: op
