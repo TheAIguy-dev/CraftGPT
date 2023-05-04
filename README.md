@@ -47,7 +47,7 @@ CraftGPT provides the following permission nodes:
 - `craftgpt.use`: Grants both of the above. This permission is granted by default.
 
 ## Support
-If you have any issues with CraftGPT or need help configuring it, please visit the CraftGPT page on [SpigotMC](https://www.spigotmc.org/resources/craftgpt.109639) for support.
+If you have any issues with CraftGPT or need help configuring it, please visit the [CraftGPT page on SpigotMC](https://www.spigotmc.org/resources/craftgpt.109639) for support.
 
 ## Disclaimer:
 CraftGPT is not affiliated with or endorsed by OpenAI. The plugin uses OpenAI's API, but is not officially supported by OpenAI.
