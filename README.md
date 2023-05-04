@@ -54,4 +54,4 @@ CraftGPT is not affiliated with or endorsed by OpenAI. The plugin uses OpenAI's 
 
 ## Development Status
 CraftGPT is currently in early development. While the plugin has been tested and is functional, it is not yet feature-complete and may undergo significant changes in the future.
-If you are interested in seeing further development of CraftGPT, please feel free to reach out to me, as I will not update it unless someone is actually using it. Your feedback and suggestions are always welcome, and will help me to improve the plugin over time.
+If you are interested in seeing further development of CraftGPT, please feel free to reach out to me, as **I will not update it unless someone is actually using it**. Your feedback and suggestions are always welcome, and will help me to improve the plugin over time.
