@@ -1,0 +1,31 @@
+# OpenAI token.
+# To get yor token, go to https://platform.openai.com/account/api-keys.
+# New accounts get 5$ for free.
+# NOTE: This is only stored locally and is not used for anything other than making requests.
+token: ""
+
+# Chat command cooldown in milliseconds.
+cooldown: 30000
+
+# Model to make requests to.
+# gpt-3.5-turbo is preferable, as it is
+# cheap and powerful, and also is
+# designed for conversations.
+# For more info, go to https://platform.openai.com and https://openai.com/pricing.
+model: gpt-3.5-turbo
+
+# Controls the display of errors occurred during the message generation process.
+show-errors: false
+
+messages:
+  # Displayed when the cooldown is not over.
+  cooldown: "Wait %time% seconds to use this command again."
+
+  # When the gpt command is executed.
+  generating: "Generating, please wait..."
+
+  # When an error occurs while generating a response.
+  error: "Something went wrong."
+
+  # When the newchat command is executed.
+  chat-cleared: "This chat has been wiped."

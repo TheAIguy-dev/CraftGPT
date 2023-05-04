@@ -1,0 +1,24 @@
+name: CraftGPT
+version: '${project.version}'
+main: com.theaiguy_.craftgpt.CraftGPT
+api-version: 1.18
+prefix: CraftGPT
+authors: [ TheAIguy_ ]
+description: A simple ChatGPT interface for Minecraft.
+
+commands:
+  gpt:
+    permission: craftgpt.gpt
+    description: Generate a message.
+  newchat:
+    permission: craftgpt.newchat
+    description: Clear current conversation.
+
+permissions:
+  craftgpt.use:
+    default: true
+    children:
+      craftgpt.gpt: true
+      craftgpt.newchat: true
+  craftgpt.cooldown:
+    default: op
