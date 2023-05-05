@@ -40,8 +40,6 @@ CraftGPT provides three commands:
 - `/gpt <text>`: Generates a response to the given text. Players must have the `craftgpt.gpt` permission to use this command. This command has a cooldown timer to prevent spamming. If a player attempts to use the command while it is on cooldown, they will receive a message indicating how long they must wait before using the command again.
 - `/newchat`: Clears the chat dialog. Players must have the `craftgpt.newchat` permission to use this command.
 
-Both commands have a cooldown timer to prevent spamming. The cooldown time can be configured in the `config.yml` file. If a player attempts to use a command while it is on cooldown, they will receive a message indicating how long they must wait before using the command again.
-
 ## Permissions
 CraftGPT provides the following permission nodes:
 - `craftgpt.reload`: Allows players to use the `/craftgpt` command.
