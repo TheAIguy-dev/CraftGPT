@@ -35,7 +35,8 @@ CraftGPT is highly configurable via the `config.yml` file. Here are the availabl
 By default, CraftGPT uses the `gpt-3.5-turbo` model, which is cheap, powerful, and designed specifically for conversations. However, you can choose to use a different model by changing the `model` configuration option.
 
 ## Usage
-CraftGPT provides two commands:
+CraftGPT provides three commands:
+- `/craftgpt`: Reload the configuration. Players must have the `craftgpt.reload` permission to use this command.
 - `/gpt <text>`: Generates a response to the given text. Players must have the `craftgpt.gpt` permission to use this command. This command has a cooldown timer to prevent spamming. If a player attempts to use the command while it is on cooldown, they will receive a message indicating how long they must wait before using the command again.
 - `/newchat`: Clears the chat dialog. Players must have the `craftgpt.newchat` permission to use this command.
 
@@ -43,6 +44,7 @@ Both commands have a cooldown timer to prevent spamming. The cooldown time can b
 
 ## Permissions
 CraftGPT provides the following permission nodes:
+- `craftgpt.reload`: Allows players to use the `/craftgpt` command.
 - `craftgpt.gpt`: Allows players to use the `/gpt` command.
 - `craftgpt.newchat`: Allows players to use the `/newchat` command.
 - `craftgpt.use`: Grants both of the above. This permission is granted by default.
