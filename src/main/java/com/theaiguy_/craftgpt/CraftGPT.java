@@ -8,14 +8,29 @@ import java.util.Objects;
 
 public final class CraftGPT extends JavaPlugin
 {
+    public static CraftGPT main;
+    public static FileConfiguration config;
 
     @Override
     public void onEnable()
     {
-        saveDefaultConfig();
+        main = this;
+        reloadConfig();
+
         registerCommand("gpt", new gpt());
         registerCommand("newchat", new newchat());
         registerCommand("craftgpt", new reload());
+    }
+
+    @Override
+    public void reloadConfig()
+    {
+        super.reloadConfig();
+
+        saveDefaultConfig();
+        config = getConfig();
+        config.options().copyDefaults(true);
+        saveConfig();
     }
 
     @Override
@@ -27,11 +42,6 @@ public final class CraftGPT extends JavaPlugin
     public static JavaPlugin getPlugin()
     {
         return CraftGPT.getPlugin(CraftGPT.class);
-    }
-
-    public static FileConfiguration config()
-    {
-        return getPlugin().getConfig();
     }
 
     public static void registerCommand(String command, CommandExecutor executor)

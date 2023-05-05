@@ -16,7 +16,7 @@ public class newchat implements CommandExecutor
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args)
     {
         gpt.messages.put(sender.getName(), new ArrayList<>());
-        sender.sendMessage(ChatColor.GRAY + config().getString("messages.chat-cleared"));
+        sender.sendMessage(ChatColor.GRAY + config.getString("messages.chat-cleared"));
         return true;
     }
 }

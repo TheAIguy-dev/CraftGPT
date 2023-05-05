@@ -23,8 +23,8 @@ public class gpt implements CommandExecutor
 {
     public static final HashMap<String, List<ChatMessage>> messages = new HashMap<>();
     private static HashMap<String, Long> cooldowns = new HashMap<>();
-    static Long cooldownMs = config().getLong("cooldown");
-    static String token = config().getString("token");
+    static Long cooldownMs = config.getLong("cooldown");
+    static String token = config.getString("token");
 
 
     @Override
@@ -33,7 +33,7 @@ public class gpt implements CommandExecutor
         long time = cooldowns.getOrDefault(sender.getName(), -cooldownMs) + cooldownMs;
         if (time > System.currentTimeMillis() && !sender.hasPermission("craftgpt.cooldown"))
         {
-            sender.sendMessage(ChatColor.DARK_RED + Objects.requireNonNull(config().getString("messages.cooldown")).replace("%time%", String.valueOf((int) ((time - System.currentTimeMillis()) / 1000))));
+            sender.sendMessage(ChatColor.DARK_RED + Objects.requireNonNull(config.getString("messages.cooldown")).replace("%time%", String.valueOf((int) ((time - System.currentTimeMillis()) / 1000))));
             return true;
         }
         cooldowns.put(sender.getName(), System.currentTimeMillis());
@@ -44,7 +44,7 @@ public class gpt implements CommandExecutor
         ChatMessage message = new ChatMessage("user", String.join(" ", args));
         messages.get(sender.getName()).add(message);
 
-        sender.sendMessage(ChatColor.GRAY + config().getString("messages.generating"));
+        sender.sendMessage(ChatColor.GRAY + config.getString("messages.generating"));
 
         Bukkit.getScheduler().runTaskAsynchronously(getPlugin(), () ->
         {
@@ -53,7 +53,7 @@ public class gpt implements CommandExecutor
                 OpenAiService service = new OpenAiService(Objects.requireNonNull(token), Duration.ofMinutes(3));
                 ChatCompletionRequest completionRequest = ChatCompletionRequest.builder()
                         .messages(messages.get(sender.getName()))
-                        .model(config().getString("model"))
+                        .model(config.getString("model"))
                         .build();
                 ChatMessage result = service.createChatCompletion(completionRequest).getChoices().get(0).getMessage();
                 sender.sendMessage(result.getContent());
@@ -62,8 +62,8 @@ public class gpt implements CommandExecutor
             catch (Exception e)
             {
                 messages.put(sender.getName(), snapshot);
-                sender.sendMessage(ChatColor.DARK_RED + config().getString("messages.error"));
-                if (config().getBoolean("show-errors")) throw e;
+                sender.sendMessage(ChatColor.DARK_RED + config.getString("messages.error"));
+                if (config.getBoolean("show-errors")) throw e;
             }
         });
         return true;
