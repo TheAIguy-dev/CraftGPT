@@ -6,8 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
-import static com.theaiguy_.craftgpt.CraftGPT.config;
-import static com.theaiguy_.craftgpt.CraftGPT.main;
+import static com.theaiguy_.craftgpt.CraftGPT.*;
 
 public class reload implements CommandExecutor
 {
@@ -18,13 +17,13 @@ public class reload implements CommandExecutor
         {
             main.reloadConfig();
 
-            gpt.token = config.getString("token");
+            gpt.token = config.getString("chatgpt.token");
             gpt.cooldownMs = config.getLong("cooldown");
-            sender.sendMessage(ChatColor.GRAY + config.getString("messages.reload"));
+            sender.sendMessage(getFormattedString("messages.reload"));
         }
         catch (Exception e)
         {
-            sender.sendMessage(ChatColor.DARK_RED + config.getString("messages.error"));
+            sender.sendMessage(getFormattedString("messages.error"));
             if (config.getBoolean("show-errors")) throw e;
         }
         return true;

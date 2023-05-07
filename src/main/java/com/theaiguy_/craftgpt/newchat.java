@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 import static com.theaiguy_.craftgpt.CraftGPT.config;
+import static com.theaiguy_.craftgpt.CraftGPT.getFormattedString;
 
 public class newchat implements CommandExecutor
 {
@@ -16,7 +17,7 @@ public class newchat implements CommandExecutor
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args)
     {
         gpt.messages.put(sender.getName(), new ArrayList<>());
-        sender.sendMessage(ChatColor.GRAY + config.getString("messages.chat-cleared"));
+        sender.sendMessage(getFormattedString("messages.chat-cleared"));
         return true;
     }
 }

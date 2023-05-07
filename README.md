@@ -26,13 +26,12 @@ That's it! CraftGPT is now installed and ready to use.
 
 ## Configuration
 CraftGPT is highly configurable via the `config.yml` file. Here are the available configuration options:
-- `token`: Your OpenAI API key.
 - `cooldown`: The cooldown time in milliseconds between `/gpt` commands.
-- `model`: The name of the AI model to use (e.g. `gpt-3.5-turbo`).
 - `show-errors`: Whether to display error messages or not.
 - `messages`: Customizable messages that are displayed to players in various situations, including cooldown messages and error messages.
+- `chatgpt`: Various ChatGPT settings.
 
-By default, CraftGPT uses the `gpt-3.5-turbo` model, which is cheap, powerful, and designed specifically for conversations. However, you can choose to use a different model by changing the `model` configuration option.
+By default, CraftGPT uses the `gpt-3.5-turbo` model, which is cheap, powerful, and designed specifically for conversations, and all the other settings set to OpenAI's default. However, you can change everything at any time in the `chatgpt` section.
 
 ## Usage
 CraftGPT provides three commands:
