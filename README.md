@@ -31,7 +31,7 @@ CraftGPT is highly configurable via the `config.yml` file. Here are the availabl
 - `messages`: Customizable messages that are displayed to players in various situations, including cooldown messages and error messages.
 - `chatgpt`: Various ChatGPT settings.
 
-By default, CraftGPT uses the `gpt-3.5-turbo` model, which is cheap, powerful, and designed specifically for conversations, and all the other settings set to OpenAI's default. However, you can change everything at any time in the `chatgpt` section.
+By default, CraftGPT uses the `gpt-3.5-turbo` model, which is cheap, powerful, and designed specifically for conversations, and all the other settings set to OpenAI's default. However, you can change anything at any time in the `chatgpt` section.
 
 ## Usage
 CraftGPT provides three commands:
