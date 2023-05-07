@@ -28,7 +28,7 @@ That's it! CraftGPT is now installed and ready to use.
 CraftGPT is highly configurable via the `config.yml` file. Here are the available configuration options:
 - `cooldown`: The cooldown time in milliseconds between `/gpt` commands.
 - `show-errors`: Whether to display error messages or not.
-- `messages`: Customizable messages that are displayed to players in various situations, including cooldown messages and error messages.
+- `messages`: Customizable messages that are displayed to players in various situations, including cooldown messages and error messages. These messages now support formatting! Check out [Formatting](https://docs.advntr.dev/minimessage/format.html) for info.
 - `chatgpt`: Various ChatGPT settings.
 
 By default, CraftGPT uses the `gpt-3.5-turbo` model, which is cheap, powerful, and designed specifically for conversations, and all the other settings set to OpenAI's default. However, you can change anything at any time in the `chatgpt` section.
