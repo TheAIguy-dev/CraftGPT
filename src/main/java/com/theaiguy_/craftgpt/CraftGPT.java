@@ -1,5 +1,6 @@
 package com.theaiguy_.craftgpt;
 
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -16,12 +17,16 @@ public final class CraftGPT extends JavaPlugin
 {
     public static CraftGPT main;
     public static FileConfiguration config;
+    public static BukkitAudiences adventure;
+
 
     @Override
     public void onEnable()
     {
         main = this;
         reloadConfig();
+
+        adventure = BukkitAudiences.create(this);
 
         registerCommand("gpt", new gpt());
         registerCommand("newchat", new newchat());
@@ -39,7 +44,11 @@ public final class CraftGPT extends JavaPlugin
     @Override
     public void onDisable()
     {
-        // Plugin shutdown logic
+        if (adventure != null)
+        {
+            adventure.close();
+            adventure = null;
+        }
     }
 
     public static JavaPlugin getPlugin()

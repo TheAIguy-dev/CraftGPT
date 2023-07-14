@@ -3,11 +3,10 @@ package com.theaiguy_.craftgpt;
 import com.theokanning.openai.completion.chat.ChatCompletionRequest;
 import com.theokanning.openai.completion.chat.ChatMessage;
 import com.theokanning.openai.service.OpenAiService;
-import net.kyori.adventure.text.Component;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -31,7 +30,7 @@ public class gpt implements CommandExecutor
     {
         if (token == null || token.equals(""))
         {
-            sender.sendMessage(getFormattedString("messages.no-token"));
+            adventure.sender(sender).sendMessage(getFormattedString("messages.no-token"));
             return true;
         }
 
@@ -40,11 +39,11 @@ public class gpt implements CommandExecutor
         {
             try
             {
-                sender.sendMessage(getFormattedString("messages.cooldown", Placeholder.unparsed("time", String.valueOf((int) ((time - System.currentTimeMillis()) / 1000)))));
+                adventure.sender(sender).sendMessage(getFormattedString("messages.cooldown", Placeholder.unparsed("time", String.valueOf((int) ((time - System.currentTimeMillis()) / 1000)))));
             }
             catch (Exception e)
             {
-                sender.sendMessage(getFormattedString("messages.error"));
+                adventure.sender(sender).sendMessage(getFormattedString("messages.error"));
                 if (config.getBoolean("show-errors")) throw e;
             }
             return true;
@@ -62,7 +61,7 @@ public class gpt implements CommandExecutor
         {
             try
             {
-                sender.sendMessage(getFormattedString("messages.generating"));
+                adventure.sender(sender).sendMessage(getFormattedString("messages.generating"));
 
                 OpenAiService service = new OpenAiService(Objects.requireNonNull(token), Duration.ofMinutes(3));
                 ChatCompletionRequest.ChatCompletionRequestBuilder completionRequestBuilder = ChatCompletionRequest.builder()
@@ -83,13 +82,13 @@ public class gpt implements CommandExecutor
 
                 ChatMessage result = service.createChatCompletion(completionRequest).getChoices().get(0).getMessage();
 
-                sender.sendMessage(MiniMessage.miniMessage().deserialize(config.getString("messages.prefix") + result.getContent()));
+                adventure.sender(sender).sendMessage(MiniMessage.miniMessage().deserialize(config.getString("messages.prefix") + result.getContent()));
                 messages.get(sender.getName()).add(result);
             }
             catch (Exception e)
             {
                 messages.put(sender.getName(), snapshot);
-                sender.sendMessage(getFormattedString("messages.error"));
+                adventure.sender(sender).sendMessage(getFormattedString("messages.error"));
                 if (config.getBoolean("show-errors")) throw e;
             }
         });

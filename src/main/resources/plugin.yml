@@ -1,7 +1,7 @@
 name: CraftGPT
 version: '${project.version}'
 main: com.theaiguy_.craftgpt.CraftGPT
-api-version: 1.18
+api-version: 1.13
 prefix: CraftGPT
 authors: [ TheAIguy_ ]
 description: A simple ChatGPT interface for Minecraft.

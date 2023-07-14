@@ -1,6 +1,5 @@
 package com.theaiguy_.craftgpt;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,11 +18,11 @@ public class reload implements CommandExecutor
 
             gpt.token = config.getString("chatgpt.token");
             gpt.cooldownMs = config.getLong("cooldown");
-            sender.sendMessage(getFormattedString("messages.reload"));
+            adventure.sender(sender).sendMessage(getFormattedString("messages.reload"));
         }
         catch (Exception e)
         {
-            sender.sendMessage(getFormattedString("messages.error"));
+            adventure.sender(sender).sendMessage(getFormattedString("messages.error"));
             if (config.getBoolean("show-errors")) throw e;
         }
         return true;
