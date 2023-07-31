@@ -1,11 +1,18 @@
 package com.theaiguy_.craftgpt;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.theokanning.openai.client.OpenAiApi;
 import com.theokanning.openai.completion.chat.ChatCompletionRequest;
 import com.theokanning.openai.completion.chat.ChatMessage;
 import com.theokanning.openai.service.OpenAiService;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,6 +29,7 @@ public class gpt implements CommandExecutor
     public static final HashMap<String, List<ChatMessage>> messages = new HashMap<>();
     private static final HashMap<String, Long> cooldowns = new HashMap<>();
     static Long cooldownMs = config.getLong("cooldown");
+    static String baseUrl = config.getString("chatgpt.base-url");
     static String token = config.getString("chatgpt.token");
 
 
@@ -63,7 +71,18 @@ public class gpt implements CommandExecutor
             {
                 adventure.sender(sender).sendMessage(getFormattedString("messages.generating"));
 
-                OpenAiService service = new OpenAiService(Objects.requireNonNull(token), Duration.ofMinutes(3));
+                ObjectMapper mapper = OpenAiService.defaultObjectMapper();
+                OkHttpClient client = OpenAiService.defaultClient(Objects.requireNonNull(token), Duration.ofMinutes(3));
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(Objects.requireNonNull(baseUrl))
+                        .client(client)
+                        .addConverterFactory(JacksonConverterFactory.create(mapper))
+                        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                        .build();
+
+                OpenAiService service = new OpenAiService(retrofit.create(OpenAiApi.class), client.dispatcher().executorService());
+
                 ChatCompletionRequest.ChatCompletionRequestBuilder completionRequestBuilder = ChatCompletionRequest.builder()
                         .messages(messages.get(sender.getName()))
                         .model(config.getString("chatgpt.model"))
