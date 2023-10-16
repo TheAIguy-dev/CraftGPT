@@ -40,6 +40,11 @@ chatgpt:
   # NOTE: This is only stored locally and is not used for anything other than making requests.
   token: ""
 
+  # API base url.
+  # Change this if you wish to use alternative API endpoints (e.g. https://api.openai-proxy.com/).
+  # Make sure that it is compatible with OpenAI API calls.
+  base-url: https://api.openai.com/
+
   # ID of the model to use.
   # See https://platform.openai.com/docs/models/model-endpoint-compatibility
   # for details on which models work with the Chat API.

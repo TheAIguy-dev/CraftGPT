@@ -16,8 +16,9 @@ public class reload implements CommandExecutor
         {
             main.reloadConfig();
 
-            gpt.token = config.getString("chatgpt.token");
             gpt.cooldownMs = config.getLong("cooldown");
+            gpt.token = config.getString("chatgpt.token");
+            gpt.baseUrl = config.getString("chatgpt.base-url");
             adventure.sender(sender).sendMessage(getFormattedString("messages.reload"));
         }
         catch (Exception e)
